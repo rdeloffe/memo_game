@@ -20,6 +20,25 @@ document.addEventListener('DOMContentLoaded', () => {
     let firstCard, secondCard;
     let lockBoard = false;
   
+    function initGame() {
+      // Supprimez les cartes existantes
+      gameBoard.innerHTML = '';
+      let cards = ['1', '2', '3', '4', '5', '6', '7', '8'];
+      cards = [...cards, ...cards]; // Dupliquez les cartes pour avoir des paires
+    
+      // Mélangez les cartes
+      cards.sort(() => 0.5 - Math.random());
+    
+      // Créez les cartes et ajoutez-les au plateau de jeu
+      cards.forEach(card => {
+        const cardElement = document.createElement('div');
+        cardElement.classList.add('card');
+        cardElement.dataset.image = card;
+        cardElement.innerHTML = `<img src="images/${card}.png" alt="Image ${card}">`;
+        gameBoard.appendChild(cardElement);
+      });
+    }
+
     function flipCard() {
       if (lockBoard) return;
       if (this === firstCard) return;
@@ -79,5 +98,31 @@ function disableCards() {
   
     const allCards = document.querySelectorAll('.card');
     allCards.forEach(card => card.addEventListener('click', flipCard));
+
+    document.getElementById('reset').addEventListener('click', handleReset);
+
+    function handleReset() {
+      initGame();
+      score = 0;
+      document.getElementById('score').innerText = 'Score: ' + score;
+      pairsFound = 0;
+      const allCards = document.querySelectorAll('.card');
+      allCards.forEach(card => card.addEventListener('click', flipCard));
+      allCards.forEach(card => {
+        card.classList.remove('flipped');
+        card.addEventListener('click', flipCard);
+      });
+      document.getElementById('winMessage').style.display = 'none';
+    }
+  });
+
+  const resetButton = document.getElementById('reset');
+
+  resetButton.addEventListener('mouseenter', function() {
+    resetButton.style.backgroundColor = 'rgb(171, 18, 18)'; // Par exemple, changez la couleur de fond en bleu
+  });
+  
+  resetButton.addEventListener('mouseleave', function() {
+    resetButton.style.backgroundColor = ''; // Réinitialisez la couleur de fond
   });
   
