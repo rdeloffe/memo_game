@@ -55,7 +55,7 @@ body {
     border-radius: 10px;
     padding: 1%;
     background-color: rgb(0, 26, 255);
-    box-shadow: 10px 10px 10px;
+    box-shadow: 5px 5px 7px black;
   }
   
   #winMessage {
@@ -66,6 +66,6 @@ body {
     border-radius: 10px;
     padding: 1%;
     background-color: green;
-    box-shadow: 10px 10px 10px;
+    box-shadow: 5px 5px 7px black;
   }
   
