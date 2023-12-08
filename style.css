@@ -15,6 +15,7 @@ body {
     border-radius: 10px;
     padding: 1%;
     background-color: rgb(199, 199, 199);
+    box-shadow: 10px 10px 10px;
   }
   
   .game-board {
@@ -54,6 +55,7 @@ body {
     border-radius: 10px;
     padding: 1%;
     background-color: rgb(0, 26, 255);
+    box-shadow: 10px 10px 10px;
   }
   
   #winMessage {
@@ -64,5 +66,6 @@ body {
     border-radius: 10px;
     padding: 1%;
     background-color: green;
+    box-shadow: 10px 10px 10px;
   }
   
